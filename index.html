@@ -1,0 +1,74 @@
+
+<html>
+<head>
+    <title>Temperature Monitoring Dashboard</title>
+
+    <!-- Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #eef3f8;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .container {
+            background-color: white;
+            max-width: 750px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: darkblue;
+        }
+
+        canvas {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Temperature Monitoring Dashboard</h1>
+        <p>Simulated temperature sensor readings</p>
+        <canvas id="temperatureChart"></canvas>
+    </div>
+
+    <script>
+        // Dummy sensor data
+        let time = ["10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM"];
+        let temperature = [27, 29, 28, 31, 33, 30, 32];
+
+        // Access the canvas element
+        let chartElement = document.getElementById("temperatureChart");
+
+        // Create the line chart
+        new Chart(chartElement, {
+            type: "line",
+            data: {
+                labels: time,
+                datasets: [{
+                    label: "Temperature (°C)",
+                    data: temperature,
+                    borderColor: "blue",
+                    backgroundColor: "lightblue",
+                    borderWidth: 2,
+                    tension: 0.3
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
